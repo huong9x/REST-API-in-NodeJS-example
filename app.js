@@ -1,14 +1,18 @@
-const Koa             = require('koa');;
-const app             = new Koa();
-const database        = require('./database/database');
-const config          = require('./knexfile')
-const knex            = require('knex')(config);
-const ProductProvider = require('./Product/ProductProvider');
-const router          = require('./api/router')
-const bodyParser      = require('koa-bodyparser');
+const Koa              = require('koa');
+const cors             = require('@koa/cors');
+const app              = new Koa();
+const database         = require('./database/database');
+const config           = require('./knexfile')
+const knex             = require('knex')(config);
+const BookProvider     = require('./resources/Book/BookProvider');
+const CategoryProvider = require('./resources/Category/CategoryProvider');
+const router           = require('./api/router')
+const bodyParser       = require('koa-bodyparser');
 
 
-app.use(ProductProvider(knex));
+app.use(cors());
+app.use(BookProvider(knex));
+app.use(CategoryProvider(knex));
 app.use(bodyParser());
 app.use(database.connectionProvider(config));
 app.use(router.routes());

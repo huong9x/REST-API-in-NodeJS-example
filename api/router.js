@@ -1,17 +1,25 @@
-const Router          = require('koa-router');
-const router          = new Router();
+const Router           = require('koa-router');
+const router           = new Router();
 
-let ProductController = require('../controllers/ProductsController');
-let productController = new ProductController();
+let BookController     = require('../controller/BookController');
+let bookController     = new BookController();
+let CategoryController = require('../controller/CategoryController');
+let categoryController = new CategoryController();
 
-  // todoList Routes
 
 router
-     .get('/products', productController.listProducts)
-     .post('/products', productController.createProduct)
-     .get('/products/:id', productController.viewProductDetail)
-     .put('/products/:id', productController.updateProduct)
-     .delete('/products/:id', productController.deleteProduct)
+     .get('/books', bookController.listBooks)
+     .post('/books', bookController.createBook)
+     .get('/books/:id', bookController.viewBookDetail)
+     .put('/books/:id', bookController.updateBook)
+     .delete('/books/:id', bookController.deleteBook)
+
+     .get('/categories', categoryController.listCategories)
+     .post('/categories', categoryController.createCategory)
+     .get('/categories/:id', categoryController.viewCategoryDetail)
+     .put('/categories/:id', categoryController.updateCategory)
+     .delete('/categories/:id', categoryController.deleteCategory)
+
      ;
 
 

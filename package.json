@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/huong9x/REST-API-in-NodeJS-example#readme",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
     "dotenv": "^8.0.0",
     "joi": "^14.3.1",
     "knex": "^0.17.6",
